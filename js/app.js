@@ -45,7 +45,15 @@ function Player = function() {
   this.x = PLAYER_STARTING_X;
   this.y = PLAYER_STARTING_Y;
 }
+Player.prototype.update = function() {
 
+}
+Player.prototype.render = function() {
+
+}
+Player.prototype.handleInput = function () {
+
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
