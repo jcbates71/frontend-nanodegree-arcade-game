@@ -16,6 +16,8 @@ var Enemy = function(speed, leftToRight, row) {
     } else {
       this.x = 505;
     }
+    this.row = row;
+    this.y = ROW_Y_VALUES[row];
 };
 
 // Update the enemy's position, required method for game
