@@ -1,5 +1,6 @@
-// TODO: Need y values for the three rows.
+// TODO: real values for constants.
 const ROW_Y_VALUES = {};
+const ENEMY_SPEED = 1;
 
 // Enemies our player must avoid
 var Enemy = function(speed, leftToRight, row) {
