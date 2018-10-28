@@ -1,11 +1,12 @@
-// TODO: real values for constants.
+const BOARD_COLUMN_WIDTH = 101;
+const BOARD_ROW_HEIGHT = 83;
+const BOARD_COLUMN_COUNT = 5;
+const BOARD_ROW_COUNT = 6;
 const ROW_Y_VALUES = {};
 const ENEMY_SPEED = 1;
 const ENEMY_COUNT = 3;
-const PLAYER_STARTING_X = 3 * 101;
-const PLAYER_STARTING_Y = 5 * 83;
-const PLAYER_MOVEMENT_X = 101;
-const PLAYER_MOVEMENT_Y = 83;
+const PLAYER_STARTING_COLUMN = 2;
+const PLAYER_STARTING_ROW = 5;
 let allEnemies = new Array(), player;
 
 // Enemies our player must avoid
@@ -48,22 +49,22 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 let Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = PLAYER_STARTING_X;
-  this.y = PLAYER_STARTING_Y;
+  this.x = PLAYER_STARTING_COLUMN * BOARD_COLUMN_WIDTH;
+  this.y = PLAYER_STARTING_ROW * BOARD_ROW_HEIGHT;
 }
 Player.prototype.update = function(direction) {
   switch (direction) {
     case 0:
-      this.y -= PLAYER_MOVEMENT_Y;
+      this.y -= BOARD_ROW_HEIGHT;
       break;
     case 1:
-      this.x += PLAYER_MOVEMENT_X;
+      this.x += BOARD_COLUMN_WIDTH;
       break;
     case 2:
-      this.y += PLAYER_MOVEMENT_Y;
+      this.y += BOARD_ROW_HEIGHT;
       break;
     case 3:
-      this.x -= PLAYER_MOVEMENT_X;
+      this.x -= BOARD_COLUMN_WIDTH;
       break;
   }
 }
