@@ -49,13 +49,14 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 let Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = PLAYER_STARTING_COLUMN;
-  this.y = PLAYER_STARTING_ROW;
+  this.sore = 0;
+  this.moveToStartingPosition();
 }
 Player.prototype.update = function(direction) {
   switch (direction) {
     case 0:
       if (this.y > 0) {this.y -= 1;}
+      if (this.y == 0) {this.reachedGoal();}
       break;
     case 1:
       if (this.x < BOARD_COLUMN_COUNT) {this.x += 1;}
@@ -81,6 +82,14 @@ Player.prototype.handleInput = function (keyCode) {
   } else if (keyCode == 'left'){
     this.update(3);
   }
+};
+Player.prototype.reachedGoal = function () {
+  this.score += 1;
+  this.moveToStartingPosition();
+};
+Player.prototype.moveToStartingPosition = function () {
+  this.x = PLAYER_STARTING_COLUMN;
+  this.y = PLAYER_STARTING_ROW;
 };
 
 // Now instantiate your objects.
