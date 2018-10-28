@@ -4,7 +4,8 @@ const ENEMY_SPEED = 1;
 const ENEMY_COUNT = 3;
 const PLAYER_STARTING_X = 3 * 101;
 const PLAYER_STARTING_Y = 5 * 83;
-const PLAYER_MOVEMENT_VALUE = 1;
+const PLAYER_MOVEMENT_X = 101;
+const PLAYER_MOVEMENT_Y = 83;
 let allEnemies = new Array(), player;
 
 // Enemies our player must avoid
@@ -53,16 +54,16 @@ let Player = function() {
 Player.prototype.update = function(direction) {
   switch (direction) {
     case 0:
-      this.y -= PLAYER_MOVEMENT_VALUE;
+      this.y -= PLAYER_MOVEMENT_Y;
       break;
     case 1:
-      this.x += PLAYER_MOVEMENT_VALUE;
+      this.x += PLAYER_MOVEMENT_X;
       break;
     case 2:
-      this.y += PLAYER_MOVEMENT_VALUE;
+      this.y += PLAYER_MOVEMENT_Y;
       break;
     case 3:
-      this.x -= PLAYER_MOVEMENT_VALUE;
+      this.x -= PLAYER_MOVEMENT_X;
       break;
   }
 }
