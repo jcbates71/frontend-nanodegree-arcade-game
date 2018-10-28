@@ -1,5 +1,8 @@
+// TODO: Need y values for the three rows.
+const ROW_Y_VALUES = {};
+
 // Enemies our player must avoid
-var Enemy = function(speed, leftToRight) {
+var Enemy = function(speed, leftToRight, row) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
