@@ -1,7 +1,7 @@
 const BOARD_COLUMN_WIDTH = 101;
 const BOARD_ROW_HEIGHT = 83;
-const BOARD_COLUMN_COUNT = 5;
-const BOARD_ROW_COUNT = 6;
+const BOARD_COLUMN_COUNT = 4;
+const BOARD_ROW_COUNT = 5;
 const ROW_Y_VALUES = {};
 const ENEMY_SPEED = 1;
 const ENEMY_COUNT = 3;
@@ -55,16 +55,16 @@ let Player = function() {
 Player.prototype.update = function(direction) {
   switch (direction) {
     case 0:
-      this.y -= BOARD_ROW_HEIGHT;
+      if (this.y > 0) {this.y -= BOARD_ROW_HEIGHT;}
       break;
     case 1:
-      this.x += BOARD_COLUMN_WIDTH;
+      if (this.x < BOARD_COLUMN_COUNT * BOARD_COLUMN_WIDTH) {this.x += BOARD_COLUMN_WIDTH;}
       break;
     case 2:
-      this.y += BOARD_ROW_HEIGHT;
+      if (this.y < BOARD_ROW_COUNT * BOARD_ROW_HEIGHT) {this.y += BOARD_ROW_HEIGHT;}
       break;
     case 3:
-      this.x -= BOARD_COLUMN_WIDTH;
+      if (this.x > 0) {this.x -= BOARD_COLUMN_WIDTH;}
       break;
   }
 }
