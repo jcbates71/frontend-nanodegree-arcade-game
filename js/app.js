@@ -8,6 +8,11 @@ var Enemy = function(speed, leftToRight) {
     this.sprite = 'images/enemy-bug.png';
     this.speed = speed;
     this.leftToRight = leftToRight;
+    if (leftToRight) {
+      this.x = 0;
+    } else {
+      this.x = 505;
+    }
 };
 
 // Update the enemy's position, required method for game
