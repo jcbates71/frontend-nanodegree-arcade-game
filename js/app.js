@@ -47,8 +47,21 @@ function Player = function() {
   this.x = PLAYER_STARTING_X;
   this.y = PLAYER_STARTING_Y;
 }
-Player.prototype.update = function() {
-
+Player.prototype.update = function(direction) {
+  switch (direction) {
+    case 0:
+      this.y -= PLAYER_MOVEMENT_VALUE;
+      break;
+    case 1:
+      this.x += PLAYER_MOVEMENT_VALUE;
+      break;
+    case 2:
+      this.y += PLAYER_MOVEMENT_VALUE;
+      break;
+    case 3:
+      this.x -= PLAYER_MOVEMENT_VALUE;
+      break;
+  }
 }
 Player.prototype.render = function() {
 
