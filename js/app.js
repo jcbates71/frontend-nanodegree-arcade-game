@@ -97,6 +97,24 @@ Player.prototype.moveToStartingPosition = function () {
   this.y = PLAYER_STARTING_ROW;
 };
 
+let checkCollisions = function() {
+  for (var i = 0; i < allEnemies.length; i++) {
+    if (player.y == allEnemies[i].y) {
+      // TODO: Add buffer for play, which doesn't take up the full width of a square.
+      if (allEnemies[i].x + BOARD_COLUMN_WIDTH > player.x * BOARD_COLUMN_WIDTH && allEnemies[i].x < (player.x + 1) * BOARD_COLUMN_WIDTH) {
+        updateCollision();
+        return;
+      }
+    }
+  }
+}
+
+let updateCollision = function() {
+  if (score > 0) {score -= 1;}
+  player.moveToStartingPosition();
+}
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -105,7 +123,6 @@ allEnemies = new Array();
 for (var i = 0; i < ENEMY_COUNT; i++) {
   allEnemies.push(new Enemy());
 }
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
