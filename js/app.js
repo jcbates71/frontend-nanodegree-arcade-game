@@ -1,6 +1,7 @@
 // TODO: real values for constants.
 const ROW_Y_VALUES = {};
 const ENEMY_SPEED = 1;
+const ENEMY_COUNT = 3;
 const PLAYER_STARTING_X = 1;
 const PLAYER_STARTING_Y = 1;
 const PLAYER_MOVEMENT_VALUE = 1;
