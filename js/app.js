@@ -67,8 +67,16 @@ Player.prototype.update = function(direction) {
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
-Player.prototype.handleInput = function () {
-
+Player.prototype.handleInput = function (keyCode) {
+  if (keyCode == 'up') {
+    this.update(0);
+  } else if (keyCode == 'right'){
+    this.update(1);
+  } else if (keyCode == 'down') {
+    this.update(2);
+  } else {
+    this.update(3);
+  }
 };
 
 // Now instantiate your objects.
