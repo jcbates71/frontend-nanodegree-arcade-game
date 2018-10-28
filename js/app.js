@@ -9,6 +9,7 @@ const ENEMY_COUNT = 3;
 const PLAYER_STARTING_COLUMN = 2;
 const PLAYER_STARTING_ROW = 5;
 let allEnemies, player;
+let score = 0;
 
 // Enemies our player must avoid
 var Enemy = function(speed, leftToRight, row) {
@@ -55,7 +56,6 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 let Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.sore = 0;
   this.moveToStartingPosition();
 }
 Player.prototype.update = function(direction) {
@@ -90,7 +90,7 @@ Player.prototype.handleInput = function (keyCode) {
   }
 };
 Player.prototype.reachedGoal = function () {
-  this.score += 1;
+  score += 1;
   this.moveToStartingPosition();
 };
 Player.prototype.moveToStartingPosition = function () {
