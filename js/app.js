@@ -49,27 +49,27 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 let Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = PLAYER_STARTING_COLUMN * BOARD_COLUMN_WIDTH;
-  this.y = PLAYER_STARTING_ROW * BOARD_ROW_HEIGHT;
+  this.x = PLAYER_STARTING_COLUMN;
+  this.y = PLAYER_STARTING_ROW;
 }
 Player.prototype.update = function(direction) {
   switch (direction) {
     case 0:
-      if (this.y > 0) {this.y -= BOARD_ROW_HEIGHT;}
+      if (this.y > 0) {this.y -= 1;}
       break;
     case 1:
-      if (this.x < BOARD_COLUMN_COUNT * BOARD_COLUMN_WIDTH) {this.x += BOARD_COLUMN_WIDTH;}
+      if (this.x < BOARD_COLUMN_COUNT) {this.x += 1;}
       break;
     case 2:
-      if (this.y < BOARD_ROW_COUNT * BOARD_ROW_HEIGHT) {this.y += BOARD_ROW_HEIGHT;}
+      if (this.y < BOARD_ROW_COUNT) {this.y += 1;}
       break;
     case 3:
-      if (this.x > 0) {this.x -= BOARD_COLUMN_WIDTH;}
+      if (this.x > 0) {this.x -= 1;}
       break;
   }
 }
 Player.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x * BOARD_COLUMN_WIDTH, this.y * BOARD_ROW_HEIGHT);
 }
 Player.prototype.handleInput = function (keyCode) {
   if (keyCode == 'up') {
