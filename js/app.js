@@ -20,11 +20,6 @@ var Enemy = function() {
   // a helper we've provided to easily load images
   this.sprite = 'images/enemy-bug.png';
   this.resetEnemy();
-  if (this.leftToRight) {
-    this.x = -BOARD_COLUMN_WIDTH;
-  } else {
-    this.x = (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH;
-  }
 };
 
 // Update the enemy's position, required method for game
@@ -48,6 +43,11 @@ Enemy.prototype.resetEnemy = function () {
   this.speed = Math.floor(Math.random() * 3) + 1;
   this.leftToRight = Math.floor(Math.random() * 2) == 0;
   this.y = Math.floor(Math.random() * 3) + 1;
+  if (this.leftToRight) {
+    this.x = -BOARD_COLUMN_WIDTH;
+  } else {
+    this.x = (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH;
+  }
 };
 
 // Now write your own player class
