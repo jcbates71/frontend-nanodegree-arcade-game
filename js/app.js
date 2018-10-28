@@ -78,7 +78,7 @@ Player.prototype.handleInput = function (keyCode) {
     this.update(1);
   } else if (keyCode == 'down') {
     this.update(2);
-  } else {
+  } else if (keyCode == 'left'){
     this.update(3);
   }
 };
