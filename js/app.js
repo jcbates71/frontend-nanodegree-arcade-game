@@ -2,10 +2,10 @@
 const ROW_Y_VALUES = {};
 const ENEMY_SPEED = 1;
 const ENEMY_COUNT = 3;
-const PLAYER_STARTING_X = 1;
-const PLAYER_STARTING_Y = 1;
+const PLAYER_STARTING_X = 3 * 101;
+const PLAYER_STARTING_Y = 5 * 83;
 const PLAYER_MOVEMENT_VALUE = 1;
-let allEnemies, player;
+let allEnemies = new Array(), player;
 
 // Enemies our player must avoid
 var Enemy = function(speed, leftToRight, row) {
@@ -45,7 +45,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-function Player = function() {
+let Player = function() {
   this.sprite = 'images/char-boy.png';
   this.x = PLAYER_STARTING_X;
   this.y = PLAYER_STARTING_Y;
