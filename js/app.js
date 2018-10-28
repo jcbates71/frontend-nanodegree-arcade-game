@@ -84,7 +84,13 @@ Player.prototype.handleInput = function (keyCode) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+player = new Player();
+for (var i = 0; i < ENEMY_COUNT; i++) {
+  const randomSpeed = Math.floor(Math.random() * 3) + 1;
+  const randomDirection = Math.floor(Math.random() * 2) == 0;
+  const randomRow = Math.floor(Math.random() * 3) + 1;
+  allEnemies.push(new Enemy(randomSpeed, randomDirection, randomRow));
+}
 
 
 // This listens for key presses and sends the keys to your
