@@ -1,13 +1,14 @@
+// TODO: Need methods for detecting collisions.
+
 const BOARD_COLUMN_WIDTH = 101;
 const BOARD_ROW_HEIGHT = 83;
 const BOARD_COLUMN_COUNT = 4;
 const BOARD_ROW_COUNT = 5;
-const ROW_Y_VALUES = {};
-const ENEMY_SPEED = 1;
+const ENEMY_SPEED = 200;
 const ENEMY_COUNT = 3;
 const PLAYER_STARTING_COLUMN = 2;
 const PLAYER_STARTING_ROW = 5;
-let allEnemies = new Array(), player;
+let allEnemies, player;
 
 // Enemies our player must avoid
 var Enemy = function(speed, leftToRight, row) {
@@ -17,15 +18,18 @@ var Enemy = function(speed, leftToRight, row) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+
+    // TODO: Add method for setting speed, leftToRight, and row.
+
     this.speed = speed;
     this.leftToRight = leftToRight;
     if (leftToRight) {
-      this.x = 0;
+      this.x = -BOARD_COLUMN_WIDTH;
     } else {
-      this.x = 505;
+      this.x = (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH;
     }
     this.row = row;
-    this.y = ROW_Y_VALUES[row];
+    this.y = row;
 };
 
 // Update the enemy's position, required method for game
@@ -37,11 +41,13 @@ Enemy.prototype.update = function(dt) {
     let movement = ENEMY_SPEED * this.speed * dt;
     if (!this.leftToRight) {movement *= -1}
     this.x += movement;
+    // TODO: Needs to reset after moving off the screen.
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  // TODO: If the enemy is moving right to left, the sprite needs to be flipped.
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y * BOARD_ROW_HEIGHT);
 };
 
 // Now write your own player class
@@ -96,6 +102,7 @@ Player.prototype.moveToStartingPosition = function () {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 player = new Player();
+allEnemies = new Array();
 for (var i = 0; i < ENEMY_COUNT; i++) {
   const randomSpeed = Math.floor(Math.random() * 3) + 1;
   const randomDirection = Math.floor(Math.random() * 2) == 0;
