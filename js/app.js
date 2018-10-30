@@ -2,7 +2,8 @@ const BOARD_COLUMN_WIDTH = 101;
 const BOARD_ROW_HEIGHT = 83;
 const BOARD_COLUMN_COUNT = 4;
 const BOARD_ROW_COUNT = 5;
-const ENEMY_SPEED = 150;
+const STARTING_ENEMY_SPEED = 150;
+const ENEMY_SPEED_INCREASE = 20;
 const ENEMY_COUNT = 3;
 const PLAYER_COLLISION_BUFFER = 40;
 const PLAYER_STARTING_COLUMN = 2;
@@ -27,7 +28,7 @@ Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
-  let movement = ENEMY_SPEED * this.speed * dt;
+  let movement = (STARTING_ENEMY_SPEED + score * ENEMY_SPEED_INCREASE) * this.speed * dt;
   this.x += movement;
   if (this.x > (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH) {this.resetEnemy()};
 };
