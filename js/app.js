@@ -51,17 +51,17 @@ let Player = function() {
 }
 Player.prototype.update = function(direction) {
   switch (direction) {
-    case 0: // Move up
+    case 'up': // Move up
       if (this.y > 0) {this.y -= 1;}
       if (this.y == 0) {this.reachedGoal();} // Goal reached at row 0
       break;
-    case 1: // Move right
+    case 'right': // Move right
       if (this.x < BOARD_COLUMN_COUNT) {this.x += 1;}
       break;
-    case 2: // Move down
+    case 'down': // Move down
       if (this.y < BOARD_ROW_COUNT) {this.y += 1;}
       break;
-    case 3: // Move left
+    case 'left': // Move left
       if (this.x > 0) {this.x -= 1;}
       break;
   }
@@ -70,16 +70,8 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x * BOARD_COLUMN_WIDTH, this.y * BOARD_ROW_HEIGHT);
 }
 Player.prototype.handleInput = function (keyCode) {
-  if (keyCode == 'up') {
-    this.update(0);
-  } else if (keyCode == 'right'){
-    this.update(1);
-  } else if (keyCode == 'down') {
-    this.update(2);
-  } else if (keyCode == 'left'){
-    this.update(3);
-  }
-};
+  if (keyCode) {player.update(keyCode);}
+}
 Player.prototype.reachedGoal = function () {
   score += 1;
   this.moveToStartingPosition();
