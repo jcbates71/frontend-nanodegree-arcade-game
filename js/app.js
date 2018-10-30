@@ -28,25 +28,18 @@ Enemy.prototype.update = function(dt) {
   // which will ensure the game runs at the same speed for
   // all computers.
   let movement = ENEMY_SPEED * this.speed * dt;
-  if (!this.leftToRight) {movement *= -1}
   this.x += movement;
-  if (this.x < -BOARD_COLUMN_WIDTH || this.x > (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH) {this.resetEnemy()};
+  if (this.x > (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH) {this.resetEnemy()};
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-  // TODO: If the enemy is moving right to left, the sprite needs to be flipped.
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y * BOARD_ROW_HEIGHT);
 };
 Enemy.prototype.resetEnemy = function () {
   this.speed = Math.floor(Math.random() * 3) + 1;
-  this.leftToRight = Math.floor(Math.random() * 2) == 0;
   this.y = Math.floor(Math.random() * 3) + 1;
-  if (this.leftToRight) {
-    this.x = -BOARD_COLUMN_WIDTH;
-  } else {
-    this.x = (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH;
-  }
+  this.x = -BOARD_COLUMN_WIDTH;
 };
 
 // Now write your own player class
