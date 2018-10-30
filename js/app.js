@@ -28,9 +28,8 @@ Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
-  let movement = (STARTING_ENEMY_SPEED + score * ENEMY_SPEED_INCREASE) * this.speed * dt;
-  this.x += movement;
-  if (this.x > (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH) {this.resetEnemy()};
+  this.x += (STARTING_ENEMY_SPEED + score * ENEMY_SPEED_INCREASE) * this.speed * dt;
+  if (this.x > (BOARD_COLUMN_COUNT + 1) * BOARD_COLUMN_WIDTH) {this.resetEnemy()};  // Reset enemy if it moved offscreen
 };
 
 // Draw the enemy on the screen, required method for game
@@ -38,9 +37,9 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y * BOARD_ROW_HEIGHT);
 };
 Enemy.prototype.resetEnemy = function () {
-  this.speed = Math.floor(Math.random() * 3) + 1;
-  this.y = Math.floor(Math.random() * 3) + 1;
-  this.x = -BOARD_COLUMN_WIDTH;
+  this.speed = Math.floor(Math.random() * 3) + 1; // One of three random speed settings
+  this.y = Math.floor(Math.random() * 3) + 1; // y is a randomly chosen row number
+  this.x = -BOARD_COLUMN_WIDTH; // x is the pixel number equal to a board square to the left of the board
 };
 
 // Now write your own player class
@@ -52,17 +51,17 @@ let Player = function() {
 }
 Player.prototype.update = function(direction) {
   switch (direction) {
-    case 0:
+    case 0: // Move up
       if (this.y > 0) {this.y -= 1;}
-      if (this.y == 0) {this.reachedGoal();}
+      if (this.y == 0) {this.reachedGoal();} // Goal reached at row 0
       break;
-    case 1:
+    case 1: // Move right
       if (this.x < BOARD_COLUMN_COUNT) {this.x += 1;}
       break;
-    case 2:
+    case 2: // Move down
       if (this.y < BOARD_ROW_COUNT) {this.y += 1;}
       break;
-    case 3:
+    case 3: // Move left
       if (this.x > 0) {this.x -= 1;}
       break;
   }
@@ -86,13 +85,14 @@ Player.prototype.reachedGoal = function () {
   this.moveToStartingPosition();
 };
 Player.prototype.moveToStartingPosition = function () {
-  this.x = PLAYER_STARTING_COLUMN;
-  this.y = PLAYER_STARTING_ROW;
+  this.x = PLAYER_STARTING_COLUMN; // x is a column number
+  this.y = PLAYER_STARTING_ROW; // y is a column number
 };
 
 let checkCollisions = function() {
   for (var i = 0; i < allEnemies.length; i++) {
-    if (player.y == allEnemies[i].y) {
+    if (player.y == allEnemies[i].y) { // Player and enemy must be in the same row
+      // Collision if the enemy's right edge is right of player's left edge and enemy's left edge is left of player's right edge
       if (allEnemies[i].x + BOARD_COLUMN_WIDTH > player.x * BOARD_COLUMN_WIDTH + PLAYER_COLLISION_BUFFER && allEnemies[i].x < (player.x + 1) * BOARD_COLUMN_WIDTH - PLAYER_COLLISION_BUFFER) {
         updateCollision();
         return;
@@ -102,7 +102,7 @@ let checkCollisions = function() {
 }
 
 let updateCollision = function() {
-  if (score > 0) {score -= 1;}
+  if (score > 0) {score -= 1;} // Score goes down after a collision
   player.moveToStartingPosition();
 }
 
