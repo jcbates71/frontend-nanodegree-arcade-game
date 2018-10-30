@@ -1,11 +1,10 @@
-// TODO: Need methods for detecting collisions.
-
 const BOARD_COLUMN_WIDTH = 101;
 const BOARD_ROW_HEIGHT = 83;
 const BOARD_COLUMN_COUNT = 4;
 const BOARD_ROW_COUNT = 5;
 const ENEMY_SPEED = 150;
 const ENEMY_COUNT = 3;
+const PLAYER_COLLISION_BUFFER = 20;
 const PLAYER_STARTING_COLUMN = 2;
 const PLAYER_STARTING_ROW = 5;
 let allEnemies, player;
@@ -100,8 +99,7 @@ Player.prototype.moveToStartingPosition = function () {
 let checkCollisions = function() {
   for (var i = 0; i < allEnemies.length; i++) {
     if (player.y == allEnemies[i].y) {
-      // TODO: Add buffer for play, which doesn't take up the full width of a square.
-      if (allEnemies[i].x + BOARD_COLUMN_WIDTH > player.x * BOARD_COLUMN_WIDTH && allEnemies[i].x < (player.x + 1) * BOARD_COLUMN_WIDTH) {
+      if (allEnemies[i].x + BOARD_COLUMN_WIDTH > player.x * BOARD_COLUMN_WIDTH + PLAYER_COLLISION_BUFFER && allEnemies[i].x < (player.x + 1) * BOARD_COLUMN_WIDTH - PLAYER_COLLISION_BUFFER) {
         updateCollision();
         return;
       }
