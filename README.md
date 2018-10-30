@@ -1,6 +1,14 @@
-frontend-nanodegree-arcade-game
-===============================
+# Bug Runner!
+### *aka frontend-nanodegree-arcade-game*
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Running Bug Runner!
+Open the project's **index.html** file and nasty bugs will start running across the screen.  Gross!
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Playing Bug Runner!
+The goal of **Bug Runner!** is to reach the water.  When you've reached the water, try reaching it again.  And again.  And again.
+
+It's not as simple as walking straight ahead, though.  Those nasty bugs running across the screen (hence the name **Bug Runner!**) will try to get you.  If you hit one, you have to start over.
+
+**Bug Runner!** may be easy at first.  But as you get better, you'll notice the bugs get better too.
+
+**Good luck!!**
