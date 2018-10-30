@@ -85,7 +85,8 @@ let checkCollisions = function() {
   for (var i = 0; i < allEnemies.length; i++) {
     if (player.y == allEnemies[i].y) { // Player and enemy must be in the same row
       // Collision if the enemy's right edge is right of player's left edge and enemy's left edge is left of player's right edge
-      if (allEnemies[i].x + BOARD_COLUMN_WIDTH > player.x * BOARD_COLUMN_WIDTH + PLAYER_COLLISION_BUFFER && allEnemies[i].x < (player.x + 1) * BOARD_COLUMN_WIDTH - PLAYER_COLLISION_BUFFER) {
+      if (allEnemies[i].x + BOARD_COLUMN_WIDTH > player.x * BOARD_COLUMN_WIDTH + PLAYER_COLLISION_BUFFER &&
+        allEnemies[i].x < (player.x + 1) * BOARD_COLUMN_WIDTH - PLAYER_COLLISION_BUFFER) {
         updateCollision();
         return;
       }
