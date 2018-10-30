@@ -4,7 +4,7 @@ const BOARD_COLUMN_COUNT = 4;
 const BOARD_ROW_COUNT = 5;
 const ENEMY_SPEED = 150;
 const ENEMY_COUNT = 3;
-const PLAYER_COLLISION_BUFFER = 20;
+const PLAYER_COLLISION_BUFFER = 40;
 const PLAYER_STARTING_COLUMN = 2;
 const PLAYER_STARTING_ROW = 5;
 let allEnemies, player;
