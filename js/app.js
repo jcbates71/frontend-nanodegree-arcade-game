@@ -1,11 +1,11 @@
-const BOARD_COLUMN_WIDTH = 101;
-const BOARD_ROW_HEIGHT = 83;
+const BOARD_COLUMN_WIDTH = 101; // Width a board square
+const BOARD_ROW_HEIGHT = 83; // Height of a board square
 const BOARD_COLUMN_COUNT = 4;
 const BOARD_ROW_COUNT = 5;
 const STARTING_ENEMY_SPEED = 150;
-const ENEMY_SPEED_INCREASE = 20;
+const ENEMY_SPEED_INCREASE = 20; // Enemy speed increase after each goal is reached
 const ENEMY_COUNT = 3;
-const PLAYER_COLLISION_BUFFER = 40;
+const PLAYER_COLLISION_BUFFER = 40; // To adjust for the player not being the full width of a square
 const PLAYER_STARTING_COLUMN = 2;
 const PLAYER_STARTING_ROW = 5;
 let allEnemies, player;
